@@ -1,23 +1,20 @@
 <h1 class="center">Liste de Pokémons</h1>
 <div class="container">
     <div class="row">
-            <div *ngFor="let pokemon of pokemonsList" class="col m4 s6">
-                <div class="card horozontal">
-                    <div class="card-image">
-                        <img src={{pokemon.picture}} />
-                    </div>
-                    <div class="card-stacked">
-                        <div class="card-content"> 
-                            <div class="center">
-                                <h6><b>{{pokemon.name}}</b></h6>
-                                <p>hp : {{ pokemon.hp}}</p>
-                                <p>cp : {{ pokemon.cp}}</p>
-                                <p>{{pokemon.types}}</p>
-                                <p><small>{{pokemon.created}}</small></p>
-                            </div>
-                        </div>
-                    </div>
+        <div *ngFor='let pokemon of pokemonsList' class="col s6 m4">
+            <div class="card horizontal" pokeBorderCard>
+              <div class="card-image">
+                <img [src]="pokemon.picture">
+              </div>
+              <div class="card-stacked">
+                <div class="card-content">
+                  <p>{{ pokemon.name }}</p>
+                  <p><small>{{ pokemon.created | date: "dd/MM/yyyy" | uppercase }}</small></p>
+                  <span *ngFor="let type of pokemon.types" class="{{type | pokemonTypeColor }}"> 
+                    {{type}}
+                  </span>
                 </div>
+              </div>
             </div>
       </div>
 </div>
